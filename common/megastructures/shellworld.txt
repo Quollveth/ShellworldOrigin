@@ -1,0 +1,214 @@
+## Shellworld construction will likely be disabled on final mod, for now it's a global flag check
+## Why it's called Colleda and Atradai will make sense later (or probably not)
+
+atradai_shellworld_site = {
+	entity = "construction_platform_entity"
+	construction_entity = "construction_platform_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	portrait = "GFX_megastructure_construction_background"
+	potential = { NOT = { has_global_flag = shellworld_construction_disabled } }
+	prerequisites = { tech_atradai_shellworld }
+
+	build_time = 1800
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 5000
+			influence = 150
+		}
+		upkeep = { energy = 5 }
+	}
+
+	possible = {
+		exists = starbase
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}
+		custom_tooltip = {
+			fail_text = "requires_surveyed_system"
+			NOT = {
+				any_system_planet = {
+					is_surveyed = {
+						who = prev.from
+						status = no
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_no_habitable_planets"
+			NOT = {
+				any_system_planet = {
+					colonizable_planet = yes
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_black_hole"
+			is_star_class = sc_black_hole
+		}
+		custom_tooltip = {
+			fail_text = "requires_no_existing_megastructure"
+			NOT = { has_any_megastructure = yes }
+		}
+	}
+
+	placement_rules = {
+		planet_possible = {
+			custom_tooltip = {
+				fail_text = "must_build_around_star"
+				is_star = yes
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_anomaly"
+				NOT = { has_anomaly = yes }
+			}
+			is_star_class = sc_black_hole
+		}
+	}
+
+	ai_weight = {
+		factor = 15
+
+		modifier = {
+			factor = 0.1
+			starbase = { NOT = { has_starbase_size >= starbase_starfortress } }
+		}
+
+		modifier = {
+			factor = 0.1
+			any_neighbor_system = {
+				exists = owner
+				NOT = {
+					owner = { is_same_value = from }
+				}
+			}
+		}
+	}
+
+	on_build_complete = {
+		from = { country_event = { id = atradai_colleda.5000 } }
+	}
+}
+
+atradai_shellworld_1 = {
+	entity = "construction_platform_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	portrait = "GFX_megastructure_construction_background"
+	potential = { NOT = { has_global_flag = shellworld_construction_disabled } }
+	prerequisites = { tech_atradai_shellworld }
+
+	upgrade_from = { atradai_shellworld_site }
+
+	build_time = 2400
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 15000
+		}
+		upkeep = { energy = 50 }
+	}
+
+	on_build_complete = {
+		from = { country_event = { id = atradai_colleda.5001 } }
+	}
+}
+atradai_shellworld_2 = {
+	entity = "construction_platform_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	portrait = "GFX_megastructure_construction_background"
+	potential = { NOT = { has_global_flag = shellworld_construction_disabled } }
+	prerequisites = { tech_atradai_shellworld }
+
+	upgrade_from = { atradai_shellworld_1 }
+
+	build_time = 2400
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 15000
+		}
+		upkeep = { energy = 50 }
+	}
+
+	on_build_complete = {
+		from = { country_event = { id = atradai_colleda.5001 } }
+	}
+}
+atradai_shellworld_3 = {
+	entity = "construction_platform_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	portrait = "GFX_megastructure_construction_background"
+	potential = { NOT = { has_global_flag = shellworld_construction_disabled } }
+	prerequisites = { tech_atradai_shellworld }
+
+	upgrade_from = { atradai_shellworld_2 }
+
+	build_time = 2400
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 15000
+		}
+		upkeep = { energy = 50 }
+	}
+
+	on_build_complete = {
+		from = { country_event = { id = atradai_colleda.5001 } }
+	}
+}
+atradai_shellworld_4 = {
+	entity = "construction_platform_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	portrait = "GFX_megastructure_construction_background"
+	potential = { NOT = { has_global_flag = shellworld_construction_disabled } }
+	prerequisites = { tech_atradai_shellworld }
+
+	upgrade_from = { atradai_shellworld_3 }
+
+	build_time = 2400
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 15000
+		}
+		upkeep = { energy = 50 }
+	}
+
+	on_build_complete = {
+		from = { country_event = { id = atradai_colleda.5002 } }
+		every_system_planet = {
+			limit = { has_planet_class = pc_black_hole }
+			set_planet_size = 15
+		}
+		spawn_planet = {
+			class = "pc_colleda"
+			location = fromfrom
+			size = 1
+			has_ring = no
+
+			init_effect = {
+				set_name = "Shellworld"
+				set_surveyed = { surveyed = yes surveyor = from }
+				set_all_comms_surveyed = yes
+				clear_blockers = yes
+				set_planet_flag = forbid_guillis_planet_modifiers
+				set_planet_flag = megastructure			# Vanilla uses to check if a megastrucure can be built here
+				set_planet_flag = has_megastructure		# Vanilla uses to check if an orbital station can be built here
+				set_planet_flag = colony_event			# Vanilla uses to prevent unwanted events on planets
+				add_modifier = {
+					modifier = atradai_colleda_buff
+					days = -1
+				}
+				add_building = colleda_layer_management_center
+			}
+		}
+		remove_megastructure = fromfrom
+	}
+}

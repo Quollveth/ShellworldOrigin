@@ -1,0 +1,28 @@
+origin_shellworld = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_shattered_ring.dds"
+	picture = GFX_origin_shattered_ring
+
+	starting_colony = pc_colleda_shattered
+	
+	habitability_preference = pc_colleda_shattered
+	preferred_planet_class_neighbor = no
+	max_once_global = yes
+	
+	initializers = { shellworld_origin }
+	
+	potential = {
+		ai = no
+	}
+
+	possible = {
+		ai = no
+	}
+	
+	
+	random_weight = {
+		base = 0
+	}
+	description = "origin_tooltip_shellworld"
+	flags = { custom_start_screen }
+}

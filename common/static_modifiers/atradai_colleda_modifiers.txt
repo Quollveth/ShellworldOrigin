@@ -1,0 +1,9 @@
+atradai_colleda_buff = { ## BIG BUFF TO THE SHELLWORLD SINCE IT USES VANILLA JOBS AND HAS TO COMPETE WITH MODDED ONES
+	planet_jobs_productive_produces_mult = 35
+	planet_jobs_upkeep_mult = -0.5
+	planet_researchers_produces_mult = 10
+	planet_max_buildings_add = 50
+	planet_max_branch_office_buildings_add = 10
+	icon = "gfx/interface/icons/planet_modifiers/pm_arcology_project.dds"
+	icon_frame = 1
+}

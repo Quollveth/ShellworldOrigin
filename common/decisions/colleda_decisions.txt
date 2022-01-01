@@ -1,0 +1,112 @@
+dec_atra_repair_colleda = {
+	enactment_time = 5000
+	resources = {
+		category = decisions
+		cost = {
+			energy = 10000
+			alloys = 150000
+		}
+	}
+	
+	potential = {
+		is_planet_class = pc_colleda_shattered
+		exists = owner
+	}
+
+	allow = {
+		owner = {
+			has_technology = tech_mega_engineering
+		}
+		num_uncleared_blockers < 1
+		custom_tooltip = {
+			fail_text = REQUIRE_REPAIRED_MODIFIER
+			has_planet_flag = can_repair_colleda
+		}
+	}
+
+	effect = {
+		custom_tooltip = REPAIR_SHELLWORLD_DECISION_EFFECTS
+		hidden_effect = {
+			change_pc = pc_colleda
+			set_planet_flag = colleda_not_specialized_industry
+			add_district = colleda_synthesizer
+			add_district = colleda_penrose
+			add_district = colleda_arcology
+			add_district = colleda_refinery
+			if = {
+				limit = { owner = { is_regular_empire = yes } }
+				add_district = colleda_metropolis
+			} else_if = {
+				limit = { owner = { is_machine_empire = yes } }
+				add_district = colleda_nexus
+			} else_if = {
+				limit = { owner = { is_hive_empire = yes } }
+				add_district = colleda_hive_city
+			}
+			if = {
+				limit = { owner = NOR { is_synthetic_empire = yes is_machine_empire = yes } }
+				add_district = colleda_farms
+			} else = {
+				add_district = colleda_synthesizer
+			}
+		}
+	}
+}
+
+dec_atra_specialized = {
+	enactment_time = 360
+	resources = {
+		category = decisions
+		cost = {
+			energy = 1500
+		}
+	}
+	
+	potential = {
+		is_planet_class = pc_colleda
+		exists = owner
+		NOT = { has_planet_flag = colleda_not_specialized_industry }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = COLLEDA_NO_INDUSTRY_DISTRICT
+			NOR = { 
+				has_district = colleda_industry
+				has_district = colleda_factory
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = COLLEDA_INDUSTRY_SPECIALIZED_EFFECT
+		set_planet_flag = colleda_not_specialized_industry
+	}
+}
+dec_atra_specialized_undo = {
+	enactment_time = 360
+	resources = {
+		category = decisions
+		cost = {
+			energy = 1500
+		}
+	}
+	
+	potential = {
+		is_planet_class = pc_colleda
+		exists = owner
+		has_planet_flag = colleda_not_specialized_industry
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = COLLEDA_NO_ARCOLOGY_DISTRICT
+			NOT = { has_district = colleda_arcology }
+		}
+	}
+
+	effect = {
+		custom_tooltip = COLLEDA_INDUSTRY_SPECIALIZED_UNDO_EFFECT
+		remove_planet_flag = colleda_not_specialized_industry
+	}
+}

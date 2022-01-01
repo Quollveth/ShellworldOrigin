@@ -1,0 +1,991 @@
+#### I CHOSE TO USE VANILLA JOBS OVER NEW ONES SO JOB BASED MODIFIERS WORK PROPERLY ####
+#### INSTEAD THE SHELLWORLD ITSELF GIVES GREATLY INCREASED JOB OUTPUT ####
+
+
+@colleda_universal_job_count = 20
+@colleda_half_job_count = 10
+@colleda_refinery_job_count = 6
+
+@colleda_district_cost_min = 1200
+@colleda_district_cost_sr = 80
+
+@colleda_district_upkeep_ec = 25
+@colleda_district_upkeep_sr = 5
+
+@colleda_district_build_time = 650
+
+@colleda_district_production_mult = 0.01 #each district applies job_produces_mult = this to all jobs it adds
+
+
+# Regular
+colleda_metropolis = {
+	base_buildtime = @colleda_district_build_time
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		exists = from
+		from = { is_regular_empire = yes }
+		uses_district_set = colleda_districts
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		uses_district_set = colleda_districts
+	}
+
+	conversion_ratio = 0.5
+	convert_to = {
+		colleda_nexus
+		colleda_hive_city
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @colleda_district_cost_min
+		}
+		upkeep = {
+			energy = @colleda_district_upkeep_ec
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 50
+		job_enforcer_add = 5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+			}
+		}
+		modifier = {
+			job_clerk_add = 30
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_prosperity_public_works }
+		}
+		modifier = {
+			planet_housing_add = 5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_1
+			}
+		}
+		modifier = {
+			planet_housing_add = 5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_2
+				NOT = { has_valid_civic = civic_agrarian_idyll }
+			}
+		}
+		modifier = {
+			planet_housing_add = 5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_prosperity_interstellar_franchising }
+		}
+		modifier = {
+			job_clerk_add = 3
+		}
+	}
+}
+
+# Hive
+colleda_hive_city = {
+	base_buildtime = @colleda_district_build_time
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		exists = from
+		from = { is_hive_empire = yes }
+		uses_district_set = colleda_districts
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_hive_empire = yes }
+		uses_district_set = colleda_districts
+	}
+
+	conversion_ratio = 0.5
+	convert_to = {
+		colleda_nexus
+		colleda_metropolis
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @colleda_district_cost_min
+		}
+		upkeep = {
+			energy = @colleda_district_upkeep_ec
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 50
+		job_maintenance_drone_add = 30
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_housing_1 }
+		}
+		modifier = {
+			planet_housing_add = 5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_housing_2 }
+		}
+		modifier = {
+			planet_housing_add = 5
+			job_maintenance_drone_add = 5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_prosperity_extended_hives }
+		}
+		modifier = {
+			planet_housing_add = 5
+		}
+	}
+}
+
+# Machine
+colleda_nexus = {
+	base_buildtime = @colleda_district_build_time
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		exists = from
+		from = { is_machine_empire = yes }
+		uses_district_set = colleda_districts
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_machine_empire = yes }
+		uses_district_set = colleda_districts
+	}
+
+	conversion_ratio = 0.5
+	convert_to = {
+		colleda_hive_city
+		colleda_metropolis
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @colleda_district_cost_min
+		}
+		upkeep = {
+			energy = @colleda_district_upkeep_ec
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 50
+		job_maintenance_drone_add = 30
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_housing_1 }
+		}
+		modifier = {
+			planet_housing_add = 5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_housing_2 }
+		}
+		modifier = {
+			planet_housing_add = 5
+			job_maintenance_drone_add = 5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_prosperity_optimized_nexus }
+		}
+		modifier = {
+			planet_housing_add = 5
+		}
+	}
+}
+
+### Basic Resources ###
+
+# Energy
+colleda_penrose = {
+	base_buildtime = @colleda_district_build_time
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = { 
+		exists = from
+		uses_district_set = colleda_districts 
+	}
+
+	potential = {
+		uses_district_set = colleda_districts
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @colleda_district_cost_min
+			exotic_gases = @colleda_district_cost_sr
+		}
+		upkeep = {
+			energy = @colleda_district_upkeep_ec
+			exotic_gases = @colleda_district_upkeep_sr
+		}
+	}
+
+	planet_modifier = {
+		planet_technician_energy_produces_mult = @colleda_district_production_mult
+		planet_housing_add = @colleda_universal_job_count
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			job_technician_add = @colleda_universal_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_technician_drone_add = @colleda_universal_job_count
+		}
+	}
+
+	ai_resource_production = {
+		energy = 30
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+# Minerals
+colleda_synthesizer = {
+	base_buildtime = @colleda_district_build_time
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = { 
+		exists = from
+		uses_district_set = colleda_districts 
+	}
+
+	potential = {
+		uses_district_set = colleda_districts
+	}
+
+	potential = {
+		uses_district_set = colleda_districts
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @colleda_district_cost_min
+			volatile_motes = @colleda_district_cost_sr
+		}
+		upkeep = {
+			energy = @colleda_district_upkeep_ec
+			volatile_motes = @colleda_district_upkeep_sr
+		}
+	}
+
+	planet_modifier = {
+		planet_miners_produces_mult = @colleda_district_production_mult
+		planet_housing_add = @colleda_universal_job_count
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			job_miner_add = @colleda_universal_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_mining_drone_add = @colleda_universal_job_count
+		}
+	}
+
+	ai_resource_production = {
+		minerals = 30
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+# Food
+colleda_farms = {
+	base_buildtime = @colleda_district_build_time
+	is_capped_by_modifier = no
+
+	
+	show_on_uncolonized = { 
+		exists = from
+		uses_district_set = colleda_districts 
+	}
+
+	potential = {
+		uses_district_set = colleda_districts
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @colleda_district_cost_min
+			volatile_motes = @colleda_district_cost_sr
+		}
+		upkeep = {
+			energy = @colleda_district_upkeep_ec
+			volatile_motes = @colleda_district_upkeep_sr
+		}
+	}
+
+	planet_modifier = {
+		planet_farmers_food_produces_mult = @colleda_district_production_mult
+		planet_housing_add = @colleda_universal_job_count
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			job_farmer_add =  @colleda_universal_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_agri_drone_add = @colleda_universal_job_count
+		}
+	}
+
+	ai_resource_production = {
+		food = 30
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+### Advanced Resources ###
+
+# Merged industry
+colleda_arcology = {
+	base_buildtime = @colleda_district_build_time
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = { 
+		exists = from
+		uses_district_set = colleda_districts 
+	}	
+
+	potential = {
+		uses_district_set = colleda_districts
+		has_planet_flag = colleda_not_specialized_industry
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @colleda_district_cost_min
+			volatile_motes = @colleda_district_cost_sr
+		}
+		upkeep = {
+			energy = @colleda_district_upkeep_ec
+			volatile_motes = @colleda_district_upkeep_sr
+		}
+	}
+
+	planet_modifier = {
+		planet_metallurgists_alloys_produces_mult = @colleda_district_production_mult
+		planet_artisans_produces_mult = @colleda_district_production_mult
+		planet_housing_add = @colleda_half_job_count
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+				is_catalytic_empire = no
+			}
+		}
+		modifier = {
+			job_fabricator_add = @colleda_half_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				is_catalytic_empire = no
+			}
+		}
+		modifier = {
+			job_alloy_drone_add = @colleda_half_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = yes
+				is_catalytic_empire = yes
+			}
+		}
+		modifier = {
+			job_catalytic_drone_add = @colleda_half_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				is_catalytic_empire = no
+			}
+		}
+		modifier = {
+			job_foundry_add = @colleda_half_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				is_catalytic_empire = yes
+			}
+		}
+		modifier = {
+			job_catalytic_technician_add = @colleda_half_job_count
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_artisan_drone_add = @colleda_half_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_regular_empire = yes
+				is_crafter_empire = no
+			}
+		}
+		modifier = {
+			job_artisan_add = @colleda_half_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_regular_empire = yes
+				is_crafter_empire = yes
+			}
+		}
+		modifier = {
+			job_artificer_add = @colleda_half_job_count
+		}
+	}
+}
+
+# Alloys
+colleda_factory = {
+	base_buildtime = @colleda_district_build_time
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = { 
+		exists = from
+		uses_district_set = colleda_districts 
+	}	
+
+	potential = {
+		uses_district_set = colleda_districts
+		NOT = { has_planet_flag = colleda_not_specialized_industry }
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @colleda_district_cost_min
+			volatile_motes = @colleda_district_cost_sr
+		}
+		upkeep = {
+			energy = @colleda_district_upkeep_ec
+			volatile_motes = @colleda_district_upkeep_sr
+		}
+	}
+
+	planet_modifier = {
+		planet_metallurgists_alloys_produces_mult = @colleda_district_production_mult
+		planet_housing_add = @colleda_universal_job_count
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+				is_catalytic_empire = no
+			}
+		}
+		modifier = {
+			job_fabricator_add = @colleda_universal_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				is_catalytic_empire = no
+			}
+		}
+		modifier = {
+			job_alloy_drone_add = @colleda_universal_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = yes
+				is_catalytic_empire = yes
+			}
+		}
+		modifier = {
+			job_catalytic_drone_add = @colleda_universal_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				is_catalytic_empire = no
+			}
+		}
+		modifier = {
+			job_foundry_add = @colleda_universal_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				is_catalytic_empire = yes
+			}
+		}
+		modifier = {
+			job_catalytic_technician_add = @colleda_universal_job_count
+		}
+	}
+}
+
+# CG
+colleda_industry = {
+	base_buildtime = @colleda_district_build_time
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = { 
+		exists = from
+		uses_district_set = colleda_districts 
+	}
+
+	potential = {
+		uses_district_set = colleda_districts
+		NOT = { has_planet_flag = colleda_not_specialized_industry }
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @colleda_district_cost_min
+			rare_crystals = @colleda_district_cost_sr
+		}
+		upkeep = {
+			energy = @colleda_district_upkeep_ec
+			rare_crystals = @colleda_district_upkeep_sr
+		}
+	}
+
+	planet_modifier = {
+		planet_artisans_produces_mult = @colleda_district_production_mult
+		planet_housing_add = @colleda_universal_job_count
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_artisan_drone_add = @colleda_universal_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_regular_empire = yes
+				is_crafter_empire = no
+			}
+		}
+		modifier = {
+			job_artisan_add = @colleda_universal_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_regular_empire = yes
+				is_crafter_empire = yes
+			}
+		}
+		modifier = {
+			job_artificer_add = @colleda_universal_job_count
+		}
+	}
+}
+
+# Refinery
+colleda_refinery = {
+	base_buildtime = @colleda_district_build_time
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = { 
+		exists = from
+		uses_district_set = colleda_districts 
+	}	
+
+	potential = {
+		uses_district_set = colleda_districts
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @colleda_district_cost_min
+		}
+		upkeep = {
+			energy = @colleda_district_upkeep_ec
+		}
+	}
+
+	planet_modifier = {
+		planet_refiners_produces_mult = @colleda_district_production_mult
+		planet_chemists_produces_mult = @colleda_district_production_mult
+		planet_translucers_produces_mult = @colleda_district_production_mult
+		planet_housing_add = @colleda_universal_job_count
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_gas_refiner_add = @colleda_refinery_job_count
+			job_chemist_add = @colleda_refinery_job_count
+			job_translucer_add = @colleda_refinery_job_count
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_gas_refiner_drone_add = @colleda_refinery_job_count
+			job_chemist_drone_add = @colleda_refinery_job_count
+			job_translucer_drone_add = @colleda_refinery_job_count
+		}
+	}
+}
+
+### Other Resources ###
+
+# Leisure
+colleda_leisure = {
+	base_buildtime = @colleda_district_build_time
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = { 
+		exists = from
+		uses_district_set = colleda_districts 
+	}
+	
+	potential = {
+		uses_district_set = colleda_districts
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @colleda_district_cost_min
+			exotic_gases = @colleda_district_cost_sr
+		}
+		upkeep = {
+			energy = @colleda_district_upkeep_ec
+			exotic_gases = @colleda_district_upkeep_sr
+		}
+	}
+
+	planet_modifier = {
+		planet_amenities_add = 35
+		planet_amenities_no_happiness_add = 35
+		planet_housing_add = @colleda_universal_job_count
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				NOT = { has_valid_civic = civic_warrior_culture }
+			}
+		}
+		modifier = {
+			job_entertainer_add = 5
+			job_culture_worker_add = @colleda_universal_job_count
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				has_valid_civic = civic_warrior_culture
+			}
+		}
+		modifier = {
+			job_duelist_add = 5
+			job_culture_worker_add = @colleda_universal_job_count
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		modifier = {
+			job_bio_trophy_add = @colleda_universal_job_count
+		}
+	}
+}
+
+# Research
+colleda_science = {
+	base_buildtime = @colleda_district_build_time
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = { 
+		exists = from
+		uses_district_set = colleda_districts 
+	}	
+
+	potential = {
+		uses_district_set = colleda_districts
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @colleda_district_cost_min
+			exotic_gases = @colleda_district_cost_sr
+		}
+		upkeep = {
+			energy = @colleda_district_upkeep_ec
+			exotic_gases = @colleda_district_upkeep_sr
+		}
+	}
+
+	planet_modifier = {
+		planet_researchers_produces_mult = @colleda_district_production_mult
+		planet_housing_add = @colleda_universal_job_count
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_researcher_add = @colleda_universal_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_brain_drone_add = @colleda_universal_job_count
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_calculator_add = @colleda_universal_job_count
+		}
+	}
+}
+
+# Admin
+colleda_paperwork = {
+	base_buildtime = @colleda_district_build_time
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = { 
+		exists = from
+		uses_district_set = colleda_districts 
+	}	
+
+	potential = {
+		uses_district_set = colleda_districts
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @colleda_district_cost_min
+			rare_crystals = @colleda_district_cost_sr
+		}
+		upkeep = {
+			energy = @colleda_district_upkeep_ec
+			rare_crystals = @colleda_district_upkeep_sr
+		}
+	}
+
+	planet_modifier = {
+		planet_bureaucrats_produces_mult = @colleda_district_production_mult
+		planet_housing_add = @colleda_universal_job_count
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_bureaucrat_add = @colleda_universal_job_count
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_synapse_drone_add = @colleda_universal_job_count
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_coordinator_add = @colleda_universal_job_count
+		}
+	}
+}

@@ -1,0 +1,105 @@
+entity = {
+	name = "colleda_planet_01_entity"
+	pdxmesh = "colleda_planet_mesh"
+	cull_radius = 1000
+
+	game_data = {
+		size = 200
+	}
+
+	locator = { name = "loc01" position = { 0 0 0 } }
+	attach = { "loc01" = "colleda_atmosphere_wall_entity" }
+
+	#planet surface texture override	
+	meshsettings = {
+		name = "planet_geosphereShape"
+		texture_diffuse = "city_planet_arthropoid_01_diffuse.dds"
+		texture_normal = "city_planet_arthropoid_01_normal.dds"
+		texture_specular = "city_planet_arthropoid_01_specular.dds"
+		shader = "PdxMeshPlanetEmissive"
+	}
+	
+	##cloud texture override
+	meshsettings = {
+		name = "clouds_geosphereShape"
+		texture_diffuse = "clouds_smog_01_diffuse.dds"
+		texture_normal = "nonormal.dds"
+		texture_specular = "nospec.dds"
+	}
+	
+	##cloud shadow texture override
+	meshsettings = {
+		name = "clouds_shadow_geosphereShape"
+		texture_diffuse = "clouds_smog_shadow_01_diffuse.dds"
+		texture_normal = "nonormal.dds"
+		texture_specular = "nospec.dds"
+	}
+		
+	##pole texture override
+	meshsettings = {
+		name = "polesShape"
+		texture_diffuse = "poles_tropical_1_diffuse.dds"
+		texture_normal = "nonormal.dds"
+		texture_specular = "nospec.dds"
+	}
+	default_state = "idle"
+    state = { name = "idle" animation = "idle" time_offset = { 0 100 } 
+        start_event = { trigger_once = yes sound = { soundeffect = "amb_planet_class" } }
+        start_event = { trigger_once = yes sound = { soundeffect = "amb_planet_class_02" } }
+	}
+
+	default_state = "idle"
+	scale = 100
+}
+entity = {
+	name = colleda_atmosphere_wall_entity
+	pdxmesh = molluscoid_01_corvette_frame_mesh
+	cull_radius = 500
+
+	locator = { name = "loc01" position = { 0 70 0 } }
+	locator = { name = "loc02" position = { 0 -70 0 } }
+
+	attach = { "loc01" = "qvt_kitbasher_ringworld" }
+	attach = { "loc02" = "qvt_kitbasher_ringworld" }
+	default_state = "idle"
+
+	scale = 0.010
+}
+
+entity = {
+	name = "colleda_planet_ruin_01_entity"
+	pdxmesh = "colleda_planet_mesh"
+	cull_radius = 1000
+
+	game_data = {
+		size = 200
+	}
+
+	locator = { name = "loc01" position = { 0 0 0 } }
+	attach = { "loc01" = "colleda_atmosphere_wall_entity" }
+
+	#planet surface texture override	
+	meshsettings = {
+		name = "planet_geosphereShape"
+		texture_diffuse = "barren_white_diffuse.dds"
+		texture_normal = "barren_02_normal.dds"
+		texture_specular = "barren_02_specular.dds"
+		shader = "PdxMeshPlanetEmissive"
+	}
+		
+	##pole texture override
+	meshsettings = {
+		name = "polesShape"
+		texture_diffuse = "poles_tropical_1_diffuse.dds"
+		texture_normal = "nonormal.dds"
+		texture_specular = "nospec.dds"
+	}
+	default_state = "idle"
+    state = { name = "idle" animation = "idle" time_offset = { 0 100 } 
+        start_event = { trigger_once = yes sound = { soundeffect = "amb_planet_class" } }
+        start_event = { trigger_once = yes sound = { soundeffect = "amb_planet_class_02" } }
+	}
+
+	default_state = "idle"
+	scale = 85
+}

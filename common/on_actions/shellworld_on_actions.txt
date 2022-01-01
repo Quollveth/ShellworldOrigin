@@ -1,0 +1,6 @@
+on_game_start = {
+	events = { atradai_colleda.5100 }
+}
+on_planet_class_changed = {
+	events = { atradai_colleda.5102 }
+}

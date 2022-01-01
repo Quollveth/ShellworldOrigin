@@ -1,0 +1,65 @@
+#### SHELLWORLD MANAGER JOBS ####
+#### 5 NEW DISTRICT SLOTS ARE ADDED EVERY 100 POPS ####
+#### THE SHELLWORLD IS NOT INFINITE AND CAPS AT 3000 POPS ####
+
+colleda_layer_manager = {
+	category = ruler
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_colony_shelter
+	clothes_texture_index = 2
+	
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_specialist_job
+
+	possible = {
+		complex_specialist_job_check_trigger = yes
+	}
+
+	planet_modifier = {
+		planet_max_districts_add = 5
+		planet_amenities_mult = 0.05
+	}
+
+	resources = {
+		category = planet_infrastructure
+		produces = {
+			unity = 10
+		}
+	}
+
+	weight = @ruler_job_weight
+}
+
+colleda_layer_manager_gestalt = {
+	category = complex_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_colony_shelter
+	clothes_texture_index = 2
+	
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_drone_job
+
+	planet_modifier = {
+		planet_max_districts_add = 4
+	}
+
+	resources = {
+		category = planet_infrastructure
+		produces = {
+			unity = 10
+		}
+	}
+	weight = @complex_drone_job_weight
+}

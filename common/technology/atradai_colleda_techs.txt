@@ -1,0 +1,12 @@
+tech_atradai_shellworld = {
+	cost = 150000
+	area = engineering
+	tier = 5
+	category = { materials }
+	prerequisites = { "tech_mega_engineering" ""tech_dyson_sphere"" }
+	weight = @tier5weight3
+	potential = {
+		#has_country_flag = surveyed_first_kilinea  #only needed in the full mod
+		NOT = { has_global_flag = shellworld_construction_disabled }
+	}
+}

@@ -1,0 +1,316 @@
+###Sub pieces
+
+entity = {
+	name = "hypertemporal_colossus_ring_mam_entity"
+	pdxmesh = "mammalian_01_colossus_rings_mesh"
+
+	get_state_from_parent = no
+
+	default_state = "idle"
+	state = { name = "idle" animation = "idle" }
+
+	playback_rate = 0
+}
+
+#Tractor beam 1
+
+entity = {
+	name = "hypertemporal_tractor_beam_entity"
+	pdxmesh = "matter_decompressor_01_stage_1_mesh"
+
+	meshsettings = {
+		name = "g_body1Shape"
+		index = 0
+		texture_diffuse = "mammalian_01_matter_decompressor_diffuse.dds"
+		texture_normal = "mammalian_01_matter_decompressor_normal.dds"
+		texture_specular = "mammalian_01_matter_decompressor_normal.dds"
+		shader = "PdxMeshShip"
+	}
+
+	default_state = "idle"
+	state = { name = "idle" animation = "idle"
+		start_event = { node = "effect_1" particle = "matde_core_beam_effect" keep_particle = yes trigger_once = yes }
+
+		start_event = { node = "core" particle = "matde_black_hole_effect" keep_particle = yes trigger_once = yes }
+
+		start_event = { node = "inner_beam_1" particle = "matde_core_small_beam_effect" keep_particle = yes trigger_once = yes }
+		start_event = { node = "inner_beam_2" particle = "matde_core_small_beam_effect" keep_particle = yes trigger_once = yes }
+		start_event = { node = "inner_beam_3" particle = "matde_core_small_beam_effect" keep_particle = yes trigger_once = yes }
+
+		start_event = { node = "inner_beam_1" particle = "matde_core_small_beam_effect" keep_particle = yes trigger_once = yes }
+		start_event = { node = "inner_beam_2" particle = "matde_core_small_beam_effect" keep_particle = yes trigger_once = yes }
+		start_event = { node = "inner_beam_3" particle = "matde_core_small_beam_effect" keep_particle = yes trigger_once = yes }
+
+		start_event = { node = "light_locator_01" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		start_event = { node = "light_locator_02" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		start_event = { node = "light_locator_03" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+
+		start_event = { node = "core" particle = "matde_black_hole_effect" keep_particle = yes trigger_once = yes }
+
+		start_event = { trigger_once = yes sound = { soundeffect = "sfx_matter_decompressor_hum" } }
+		start_event = { trigger_once = yes sound = { soundeffect = "sfx_matter_decompressor_hum_treble" } }
+	}
+	scale = 0.6
+}
+
+entity = {
+	name = "hypertemporal_tractor_beam_two_entity"
+	cull_radius = 500
+
+	locator = { name = "loc101" position = { 0 0 -80 } rotation = { 0 180 150 } }
+	locator = { name = "loc102" position = { 0 0 80 } rotation = { 0 0 150 } }
+
+	default_state = "idle"
+
+	attach = { "loc101" = "hypertemporal_tractor_beam_entity" }
+	attach = { "loc102" = "hypertemporal_tractor_beam_entity" }
+
+	scale = 1
+}
+
+entity = {
+	name = "hypertemporal_tractor_beam_six_entity"
+	cull_radius = 500
+
+	locator = { name = "loc101" position = { 0 0 0 } rotation = { 0 0 0 } }
+	locator = { name = "loc102" position = { 0 0 0 } rotation = { 0 120 0 } }
+	locator = { name = "loc103" position = { 0 0 0 } rotation = { 0 240 0 } }
+
+	default_state = "idle"
+
+	attach = { "loc101" = "hypertemporal_tractor_beam_two_entity" }
+	attach = { "loc102" = "hypertemporal_tractor_beam_two_entity" }
+	attach = { "loc103" = "hypertemporal_tractor_beam_two_entity" }
+
+	scale = 1
+}
+
+entity = {
+	name = "hypertemporal_tractor_beam_ring_entity"
+	cull_radius = 500
+
+	locator = { name = "loc101" position = { 0 0 0 } rotation = { 0 0 90 } }
+
+	attach = { "loc101" = "hypertemporal_tractor_beam_six_entity" }
+
+	scale = 3
+}
+
+#Center ring
+
+entity = {
+	name = "hypertemporal_center_ring_tractor_beams"
+	cull_radius = 500
+
+	locator = { name = "loc101" position = { 0 0 0 } rotation = { 45 0 0 } }
+	default_state = "idle"
+	attach = { "loc101" = "hypertemporal_tractor_beam_ring_entity" }
+
+	scale = 0.85
+}
+
+entity = {
+	name = "hypertemporal_center_ring_inner_frame"
+	cull_radius = 500
+
+	locator = { name = "loc101" position = { 0 0 0 } 	rotation = { 0 0 90 } }
+	locator = { name = "loc102" position = { 0 0.8 0 } 	rotation = { 0 0 90 } }
+	locator = { name = "loc103" position = { 0 -0.8 0 } rotation = { 0 0 90 } }
+	attach = { "loc101" = "hypertemporal_colossus_ring_mam_entity" }
+	attach = { "loc102" = "hypertemporal_colossus_ring_mam_entity" }
+	attach = { "loc103" = "hypertemporal_colossus_ring_mam_entity" }
+
+	scale = 6
+}
+
+entity = {
+	name = "hypertemporal_center_ring_entity"
+	cull_radius = 500
+
+	locator = { name = "loc101" position = { 0 0 0 } rotation = { 0 0 0 } }
+
+	attach = { "loc101" = "hypertemporal_center_ring_tractor_beams" }
+	attach = { "loc101" = "hypertemporal_center_ring_inner_frame" }
+
+	scale = 1
+}
+
+#Support beams
+
+entity = {
+	name = "hypertemporal_support_beam_chunk_entity_entity"
+	cull_radius = 500
+
+	locator = { name = "loc101" position = { 0 3.5 -6.5 } rotation = { 180 0 0 } }
+	locator = { name = "loc102" position = { 0 3.5 6.5 } rotation = { 0 0 0 } }
+
+	attach = { "loc101" = "fungoid_01_orbital_station_refinery_section_entity" }
+	attach = { "loc102" = "fungoid_01_orbital_station_refinery_section_entity" }
+
+	scale = 1
+}
+
+entity = {
+	name = "hypertemporal_support_beam_chunk_entity"
+	cull_radius = 500
+
+	locator = { name = "loc103" position = { 0 0 31 } rotation = { 0 0 0 } }
+	locator = { name = "loc104" position = { 0 0 46.5 } rotation = { 0 0 0 } }
+	locator = { name = "loc105" position = { 0 0 62 } rotation = { 0 0 0 } }
+
+	attach = { "loc103" = "hypertemporal_support_beam_chunk_entity_entity" }
+	attach = { "loc104" = "hypertemporal_support_beam_chunk_entity_entity" }
+	attach = { "loc105" = "hypertemporal_support_beam_chunk_entity_entity" }
+
+	scale = 4
+}
+
+entity = {
+	name = "hypertemporal_support_beam_two_entity"
+	cull_radius = 500
+
+	locator = { name = "loc101" position = { 0 0 -115 } rotation = { 0 180 150 } }
+	locator = { name = "loc102" position = { 0 0 115 } rotation = { 0 0 150 } }
+
+	default_state = "idle"
+
+	attach = { "loc101" = "hypertemporal_support_beam_chunk_entity" }
+	attach = { "loc102" = "hypertemporal_support_beam_chunk_entity" }
+
+	scale = 1
+}
+
+entity = {
+	name = "hypertemporal_support_beam_six_entity"
+	cull_radius = 500
+
+	locator = { name = "loc101" position = { 0 0 0 } rotation = { 0 0 0 } }
+	locator = { name = "loc102" position = { 0 0 0 } rotation = { 0 120 0 } }
+	locator = { name = "loc103" position = { 0 0 0 } rotation = { 0 240 0 } }
+
+	default_state = "idle"
+
+	attach = { "loc101" = "hypertemporal_support_beam_two_entity" }
+	attach = { "loc102" = "hypertemporal_support_beam_two_entity" }
+	attach = { "loc103" = "hypertemporal_support_beam_two_entity" }
+
+	scale = 1
+}
+
+entity = {
+	name = "hypertemporal_support_beam_entity"
+	cull_radius = 500
+
+	locator = { name = "loc101" position = { 0 0 0 } rotation = { -15 0 90 } }
+
+	attach = { "loc101" = "hypertemporal_support_beam_six_entity" }
+
+	scale = 1
+}
+
+#Ringworld connector
+
+entity = {
+	name = "hypertemporal_connector_entity"
+	scale = 1
+	pdxmesh = "mega_art_institution_01_stage_1_mesh"
+	
+		meshsettings = {
+			name = "polySurface15"
+			index = 0
+			texture_diffuse = "mammalian_01_mega_art_institution_diffuse.dds"
+			texture_normal = "mammalian_01_mega_art_institution_normal.dds"
+			texture_specular = "mammalian_01_mega_art_institution_specular.dds"
+			shader = "PdxMeshShip"
+		}
+	
+	default_state = "idle"
+	state = { name = "idle" animation = "idle" animation_speed = 0.7 }
+}
+
+entity = {
+	name = "hypertemporal_connector_two_entity"
+	cull_radius = 500
+
+	locator = { name = "loc101" position = { 0 0 -150 } rotation = { 0 90 0 } }
+	locator = { name = "loc102" position = { 0 0 150 } rotation = { 0 -90 0 } }
+
+	default_state = "idle"
+
+	attach = { "loc101" = "hypertemporal_connector_entity" }
+	attach = { "loc102" = "hypertemporal_connector_entity" }
+
+	scale = 1
+}
+
+entity = {
+	name = "hypertemporal_connector_six_entity"
+	cull_radius = 500
+
+	locator = { name = "loc101" position = { 0 0 0 } rotation = { 0 0 0 } }
+	locator = { name = "loc102" position = { 0 0 0 } rotation = { 0 120 0 } }
+	locator = { name = "loc103" position = { 0 0 0 } rotation = { 0 240 0 } }
+
+	default_state = "idle"
+
+	attach = { "loc101" = "hypertemporal_connector_two_entity" }
+	attach = { "loc102" = "hypertemporal_connector_two_entity" }
+	attach = { "loc103" = "hypertemporal_connector_two_entity" }
+
+	scale = 1
+}
+
+entity = {
+	name = "hypertemporal_connector_ring_entity"
+	cull_radius = 500
+
+	locator = { name = "loc101" position = { 0 0 0 } rotation = { -15 0 90 } }
+
+	attach = { "loc101" = "hypertemporal_connector_six_entity" }
+
+	scale = 3
+}
+
+
+###Hypertemporal
+
+entity = {
+	name = hypertemporal_atmosphere_wall_entity
+	cull_radius = 500
+
+	locator = { name = "loc01" position = { 0 70 0 } }
+	locator = { name = "loc02" position = { 0 -70 0 } }
+
+	attach = { "loc01" = "qvt_kitbasher_ringworld" }
+	attach = { "loc02" = "qvt_kitbasher_ringworld" }
+
+	scale = 0.26
+}
+
+
+entity = {
+	name = hypertemporal_ringworld_entity
+	cull_radius = 500
+
+	locator = { name = "root" postition = { 0 0 0 } rotation = { 0 0 0 } }
+	attach = { "root" = "qvt_kitbasher_ringworld" }
+	attach = { "root" = "hypertemporal_connector_ring_entity" }
+
+	scale = 0.9
+}
+
+entity = {
+	name = hypertemporal_full_entity
+	cull_radius = 5000
+
+	game_data = {
+		size = 2500
+	}
+
+	locator = { name = "root" position = { 0 0 0 } }
+	attach = { "root" = "hypertemporal_ringworld_entity" }
+	attach = { "root" = "hypertemporal_center_ring_entity" }
+	attach = { "root" = "hypertemporal_support_beam_entity" }
+
+	scale = 1
+}

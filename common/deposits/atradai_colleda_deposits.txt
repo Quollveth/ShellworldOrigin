@@ -1,0 +1,125 @@
+d_atra_ruined_colleda = {
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	potential = {
+		planet_size >= 1
+	}
+	drop_weight = { weight = 0 }
+	prerequisites = {
+		tech_mega_engineering
+	}
+	time = 3600
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 150000
+			alloys = 200000
+		}
+	}
+
+	on_cleared = {
+		add_modifier = {
+			modifier = atradai_colleda_buff
+			days = -1
+		}
+		add_deposit = d_colleda_ruins_5
+		add_deposit = d_colleda_ruins_5
+		add_deposit = d_colleda_ruins_5
+		add_deposit = d_colleda_ruins_5
+		set_planet_flag = can_repair_colleda
+	}
+}
+
+d_atra_colleda_job_manager = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	potential = {
+		planet_size >= 1
+	}
+	drop_weight = { weight = 0 }
+	can_be_cleared = {
+		always = no
+	}
+	planet_modifier = {
+		pop_demotion_time_mult = -10
+	}
+}
+
+d_colleda_ruins_1 = {
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	potential = {
+		planet_size >= 1
+	}
+	drop_weight = { weight = 0 }
+	time = 1800
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1500
+		}
+	}
+}
+d_colleda_ruins_2 = {
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	potential = {
+		planet_size >= 1
+	}
+	drop_weight = { weight = 0 }
+	time = 2400
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 5000
+		}
+	}
+}
+d_colleda_ruins_3 = {
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	potential = {
+		planet_size >= 1
+	}
+	drop_weight = { weight = 0 }
+	time = 1200
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 8000
+			minerals = 2000
+		}
+	}
+}
+d_colleda_ruins_4 = {
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	potential = {
+		planet_size >= 1
+	}
+	time = 1200
+	drop_weight = { weight = 0 }
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 3000
+			minerals = 1000
+		}
+	}
+}
+d_colleda_ruins_5 = {
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	potential = {
+		planet_size >= 1
+	}
+	time = 2000
+	drop_weight = { weight = 0 }
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 5000
+			alloys = 1000
+		}
+	}
+}
