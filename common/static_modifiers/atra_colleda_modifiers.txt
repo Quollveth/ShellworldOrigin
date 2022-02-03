@@ -4,6 +4,7 @@ atradai_colleda_buff = { ## BIG BUFF TO THE SHELLWORLD SINCE IT USES VANILLA JOB
 	planet_researchers_produces_mult = 10
 	planet_max_buildings_add = 50
 	planet_max_branch_office_buildings_add = 10
+	planet_max_districts_add = 2
 	icon = "gfx/interface/icons/planet_modifiers/pm_arcology_project.dds"
 	icon_frame = 1
 }

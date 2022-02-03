@@ -1,0 +1,117 @@
+@colleda_sh_district_upkeep_sr = 1
+@colleda_sh_district_upkeep_ec = 8
+
+d_atra_colleda_job_manager = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	potential = {
+		planet_size >= 1
+	}
+	drop_weight = { weight = 0 }
+	can_be_cleared = {
+		always = no
+	}
+	planet_modifier = {
+		pop_demotion_time_mult = -10
+	}
+}
+
+d_atra_ruined_expansion = {
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	potential = {
+		planet_size >= 1
+	}
+	drop_weight = { weight = 0 }
+	time = 1600
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 3000
+			alloys = 5000
+		}
+	}
+
+	on_cleared = {
+		custom_tooltip = CAN_EXPAND_COLLEDA_TOOLTIP
+	}
+}
+
+d_colleda_ruins_automation = {
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	potential = {
+		planet_size >= 1
+	}
+	drop_weight = { weight = 0 }
+	time = 1800
+	prerequisites = {
+		tech_shellworld_restore_ai
+	}
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 5000
+		}
+	}
+	on_cleared = {
+		remove_deposit = d_colleda_generator
+		remove_planet_flag = broken_automation
+		custom_tooltip = COLLEDA_REPAIR_ATUOMATION_TOOLTIP
+	}
+}
+
+d_colleda_ruins_automation_advanced = {
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	potential = {
+		planet_size >= 1
+	}
+	drop_weight = { weight = 0 }
+	time = 1800
+	prerequisites = {
+		tech_shellworld_restore_ai
+	}
+	can_be_cleared = {
+		NOT = { has_deposit = d_colleda_ruins_automation }
+	}
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 8000
+		}
+	}
+	on_cleared = {
+		custom_tooltip = COLLEDA_REPAIR_ATUOMATION_ADVANCED_TOOLTIP
+	}
+}
+
+d_colleda_generator = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	potential = {
+		planet_size >= 1
+	}
+	drop_weight = { weight = 0 }
+	can_be_cleared = {
+		always = no
+	}
+	resources = {
+		category = planet_deposits
+		produces = {
+			trigger = { planet = { has_district = colleda_preserve_sh } }
+			exotic_gases = @colleda_sh_district_upkeep_sr
+			energy = @colleda_sh_district_upkeep_ec
+		}
+		produces = {
+			trigger = { planet = { has_district = colleda_industry_sh } }
+			volatile_motes = @colleda_sh_district_upkeep_sr
+			energy = @colleda_sh_district_upkeep_ec
+		}
+		produces = {
+			trigger = { planet = { has_district = colleda_industry_sh } }
+			rare_crystals = @colleda_sh_district_upkeep_sr
+			energy = @colleda_sh_district_upkeep_ec
+		}
+	}	
+}

@@ -2,6 +2,9 @@
 #### 5 NEW DISTRICT SLOTS ARE ADDED EVERY 100 POPS ####
 #### THE SHELLWORLD IS NOT INFINITE AND CAPS AT 3000 POPS ####
 
+@colleda_districts_per_job = 2
+@colleda_districts_per_job_sh = 16
+
 colleda_layer_manager = {
 	category = ruler
 	condition_string = SPECIALIST_JOB_TRIGGER
@@ -21,9 +24,21 @@ colleda_layer_manager = {
 		complex_specialist_job_check_trigger = yes
 	}
 
-	planet_modifier = {
-		planet_max_districts_add = 5
-		planet_amenities_mult = 0.05
+	triggered_planet_modifier = {
+		potential = {
+			has_planet_flag = ruined_shellworld
+		}
+		modifier = {
+			planet_max_districts_add = @colleda_districts_per_job_sh
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { has_planet_flag = ruined_shellworld }
+		}
+		modifier = {
+			planet_max_districts_add = @colleda_districts_per_job
+		}
 	}
 
 	resources = {
@@ -51,8 +66,21 @@ colleda_layer_manager_gestalt = {
 
 	possible_precalc = can_fill_drone_job
 
-	planet_modifier = {
-		planet_max_districts_add = 4
+	triggered_planet_modifier = {
+		potential = {
+			has_planet_flag = ruined_shellworld
+		}
+		modifier = {
+			planet_max_districts_add = @colleda_districts_per_job_sh
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { has_planet_flag = ruined_shellworld }
+		}
+		modifier = {
+			planet_max_districts_add = @colleda_districts_per_job
+		}
 	}
 
 	resources = {

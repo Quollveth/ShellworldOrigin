@@ -1,0 +1,126 @@
+event = {
+	id = atradai_colleda.5100
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		every_playable_country = {
+			limit = { has_origin = origin_shellworld }
+			country_event = { id = atradai_colleda.5101 }
+		}
+	}
+}
+
+country_event = {
+	id = atradai_colleda.5101
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		country_event = { id = atradai_colleda.5010 }
+		capital_scope = {
+			generate_start_pops = yes
+			
+			if = {
+				limit = { owner = { is_lithoid_empire = yes NOT = { has_valid_civic = civic_hive_devouring_swarm } } }
+				while = { count = 4 add_deposit = d_hibernating_lithoids } 
+			}
+		
+			if = {
+				limit = { owner = { is_lithoid_empire = yes has_valid_civic = civic_hive_devouring_swarm } }
+				while = { count = 2 add_deposit = d_hibernating_lithoids }
+			}
+
+			remove_all_districts = yes
+			remove_all_buildings = yes
+
+			if = {
+				limit = {
+					owner = { is_regular_empire = yes }
+				}	
+				# 5 jobs
+				add_building = building_capital
+			}
+			
+			if = {
+				limit = {
+					owner = { is_hive_empire = yes }
+				}	
+				# 5 jobs
+				add_building = building_hive_capital
+	
+				# 1 job
+				add_building = building_spawning_pool
+			}
+
+			if = {
+				limit = { owner = { is_machine_empire = yes } }
+	
+				# 6 jobs
+				add_building = building_machine_capital
+	
+				# 1 job
+				add_building = building_machine_assembly_plant
+	
+				#Servitors
+				if = {
+					limit = { owner = { has_civic = civic_machine_servitor } }
+					add_building = building_organic_sanctuary
+				}
+			}
+
+			every_owned_pop = {
+				unemploy_pop = yes
+				clear_pop_category = yes
+			}
+			check_planet_employment = yes
+
+			# above is copy pasted, shellworld stuff comes here
+			set_planet_size = 1
+			add_building = colleda_layer_management_center
+			add_deposit = d_atra_ruined_expansion
+			add_deposit = d_atra_colleda_job_manager
+			add_deposit = d_colleda_ruins_automation
+			add_deposit = d_colleda_generator
+			add_deposit = d_colleda_ruins_automation_advanced
+
+			# districts
+			if = {
+				limit = { owner = { is_regular_empire = yes } }
+				add_district = colleda_metropolis_sh
+			}
+			if = {
+				limit = { owner = { is_hive_empire = yes } }
+				add_district = colleda_hive_city_sh
+			}
+			if = {
+				limit = { owner = { is_machine_empire = yes } }
+				add_district = colleda_nexus_sh
+			}
+			add_district = colleda_extraction_sh
+			add_district = colleda_preserve_sh
+			add_district = colleda_industry_sh
+		}
+	}
+}
+
+planet_event = {
+	id = atradai_colleda.5102
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { is_planet_class = pc_colleda }
+	immediate = {
+		owner = {
+			country_event = {
+				id = atradai_colleda.5103
+			}
+		}
+	}
+}
+
+country_event = {
+	id = atradai_colleda.5103
+	title = atradai_colleda.5103.name
+	desc = atradai_colleda.5103.desc
+	picture = GFX_evt_city_planet
+	is_triggered_only = yes
+	option = { name = atradai_colleda.5103.a }
+}

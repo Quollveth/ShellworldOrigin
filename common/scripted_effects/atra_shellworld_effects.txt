@@ -1,0 +1,55 @@
+colleda_clear_spec = {
+	if = {
+		limit = { has_planet_flag = colleda_spec_ec }
+		remove_planet_flag = colleda_spec_ec
+	}
+	if = {
+		limit = { has_planet_flag = colleda_spec_min }
+		remove_planet_flag = colleda_spec_min
+	}
+	if = {
+		limit = { has_planet_flag = colleda_spec_food }
+		remove_planet_flag = colleda_spec_food
+	}
+	if = {
+		limit = { has_planet_flag = colleda_spec_tech }
+		remove_planet_flag = colleda_spec_tech
+	}
+	if = {
+		limit = { has_planet_flag = colleda_spec_cg }
+		remove_planet_flag = colleda_spec_cg
+	}
+	if = {
+		limit = { has_planet_flag = colleda_spec_al }
+		remove_planet_flag = colleda_spec_al
+	}
+}
+
+shellworld_repair_effect = { #thamks laneer
+	export_trigger_value_to_variable = { 
+		trigger = num_districts 
+		parameters = { type = $pre_repair_district$ }
+		variable = $var_name$
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = $var_name$
+				value < 8
+			}
+		}
+		set_variable = {
+			which = $var_name$
+			value = 1
+		}
+	}
+	else = {
+		divide_variable = { which = $var_name$ value = 8 }
+		floor_variable = $var_name$
+	}
+}
+
+shellworld_repair_after_effect = {
+	while = { count = $var_name$ add_district = $post_repair_district$ }
+	set_variable = { which = $var_name$ value = 0 }  
+}

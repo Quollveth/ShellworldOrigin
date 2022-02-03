@@ -1,0 +1,76 @@
+@colleda_layer_manager_per_pop = 0.01
+@colleda_layer_manager_static = 30
+@colleda_layer_management_base_districts = 4
+@colleda_layer_management_base_districts_sh = 16
+@colleda_layer_pop_cap = 3000
+
+colleda_layer_management_center = {
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+
+	#base district count, for ruined first then repaired
+	triggered_planet_modifier = {
+		potential = {
+			has_planet_flag = ruined_shellworld
+		}
+		modifier = {
+			planet_max_districts_add = @colleda_layer_management_base_districts_sh
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { has_planet_flag = ruined_shellworld }
+		}
+		modifier = {
+			planet_max_districts_add = @colleda_layer_management_base_districts
+		}
+	}
+
+	## expansion mechanic, job is added every X pops, job gives more districts, once the pop cap is reached the job stops being given dinamically and instead a static modifier is applied
+	
+	# DYNAMIC REGULAR
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+			num_pops < @colleda_layer_pop_cap
+		}
+		modifier = {
+			job_colleda_layer_manager_per_pop = @colleda_layer_manager_per_pop
+		}
+	}
+	# DYNAMIC GESTALT
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			num_pops < @colleda_layer_pop_cap
+		}
+		modifier = {
+			job_colleda_layer_manager_gestalt_per_pop = @colleda_layer_manager_per_pop
+		}
+	}
+	# STATIC REGULAR
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+			num_pops >= @colleda_layer_pop_cap
+		}
+		modifier = {
+			job_colleda_layer_manager_add = @colleda_layer_manager_static
+		}
+	}
+	# STATIC GESTALT
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			num_pops >= @colleda_layer_pop_cap
+		}
+		modifier = {
+			job_colleda_layer_manager_gestalt_add = @colleda_layer_manager_static
+		}
+	}
+}

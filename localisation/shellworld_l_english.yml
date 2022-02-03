@@ -8,7 +8,7 @@ origin_tooltip_shellworld:0 "Start on a ruined shellworld, once fully repaired t
 
 ##Events: 
 atradai_colleda.5010.name:0 "Shellworld mechanics"
-atradai_colleda.5010.desc:0 "The shellworld is a massive construct encircling a black hole composed of multiple layers forming the shell. The structure is capable of being completely self sufficient. \n \n The Shellworld expands as you move more pops into it gaining 5 new district slots every 100 pops. But the Shellworld is not capable of infinite expansion and will cap at 3000 pops, more pops can still live on it but no new districts will be added."
+atradai_colleda.5010.desc:0 "The shellworld is a massive construct encircling a black hole composed of multiple layers forming the shell. The structure is capable of being completely self sufficient. \n \n The Shellworld expands as you move more pops into it gaining 5 new district slots every 100 pops. But the Shellworld is not capable of infinite expansion and will cap at 3000 pops, more pops can still live on it but no new districts will be added. \n R IGNORE THIS SCREEN, IT'S OUTDATED AND INNACURE BUT I WONT BOTHER TO FIX IT, BUT IT STAYS HERE COS WHEN I DO FIX IT DONT WANT TO HAVE TO ADD IT AGAIN!"
 atradai_colleda.5010.a:0 "Show this screen again"
 atradai_colleda.5010.b:0 "Got it"
 
@@ -30,87 +30,138 @@ atradai_colleda.5103.a:0 "At last, restored."
 pc_colleda:0 "Shellworld"
 pc_colleda_desc:0 "A extremely advanced habitat built around a black hole"
 
-pc_colleda_shattered:0 "Destroyed Shellworld"
-pc_colleda_shattered_desc:0 "The ruins of a extremely advanced habitat built around a black hole"
-
 #Buildings:
 colleda_layer_management_center:0 "Shellworld layer management centre"
-colleda_layer_management_center_desc:0 "This building server as the main management office of the multiple layers on the shellwolrd to guide their expansion"
+colleda_layer_management_center_desc:0 "This building serves as the main management office of the multiple layers on the shellwolrd to guide their expansion"
 
-mod_job_colleda_layer_manager_per_pop:0 "One layer manager every 100 pops, layer managers give 5 new district slots"
-mod_job_colleda_layer_manager_gestalt_per_pop:0 "One layer manager every 100 pops, layer managers give 5 new district slots"
+mod_job_colleda_layer_manager_per_pop:0 "One layer manager every 100 pops, layer managers give 2 (16 when ruined) new district slots"
+mod_job_colleda_layer_manager_gestalt_per_pop:0 "$mod_job_colleda_layer_manager_per_pop$"
 
-mod_job_colleda_layer_manager_add:0 "One layer manager every 100 pops, layer managers give 5 new district slots"
-mod_job_colleda_layer_manager_gestalt_add:0 "One layer manager every 100 pops, layer managers give 5 new district slots"
+mod_job_colleda_layer_manager_add:0 "$mod_job_colleda_layer_manager_per_pop$"
+mod_job_colleda_layer_manager_gestalt_add:0 "$mod_job_colleda_layer_manager_per_pop$"
 
 job_colleda_layer_manager:0 "Shellworld Layer Manager"
-job_colleda_layer_manager_gestalt:0 "Shellworld Layer Manager"
+job_colleda_layer_manager_gestalt:0 "$job_colleda_layer_manager$"
 
 job_colleda_layer_manager_desc:0 "These administrators oversee the expansion of the shellworld layers"
-job_colleda_layer_manager_gestalt_desc:0 "These administrators oversee the expansion of the shellworld layers"
+job_colleda_layer_manager_gestalt_desc:0 "$job_colleda_layer_manager_desc$"
+
 
 #Districts
-colleda_metropolis:0 "Hiper Metropolis"
-colleda_metropolis_desc:0 "Massive residencial arcologies fill these layers of the shellworld to house a massive population"
 
-colleda_hive_city:0 "Hiper Metropolis"
-colleda_hive_city_desc:0 "Massive residencial arcologies fill these layers of the shellworld to house a massive population"
+colleda_borked:0 "\n YThis district is currently damaged and not operating at full capacity!"
 
-colleda_nexus:0 "Hiper Metropolis"
-colleda_nexus_desc:0 "Massive residencial arcologies fill these layers of the shellworld to house a massive population"
+colleda_metropolis_sh:0 "Damaged Hyper Metropolis"
+colleda_metropolis_sh_desc:0 "Massive cities filled with residential buildings and office spaces $colleda_borked$"
+
+colleda_nexus_sh:0 "Damaged Hyper Nexus"
+colleda_nexus_sh_desc:0 "Massive machine cities filled with all administrative needs a intelligence needs $colleda_borked$"
+
+colleda_hive_city_sh:0 "Damaged Hyper Nexus"
+colleda_hive_city_sh_desc:0 "Massive partially living cities filled with all needs for a hive mind $colleda_borked$"
+
+colleda_extraction_sh:0 "Damaged Extraction Operations"
+colleda_extraction_sh_desc:0 "Inner layers of the shellworld focus on extracting energy from the black hole and powering matter synthesizers $colleda_borked$"
+
+colleda_preserve_sh:0 "Damaged Preservation Operations"
+colleda_preserve_sh_desc:0 "Outer near vacuum layers allow for perfectly controlled artificial environments be it for research or recreating planetary surfaces for agriculture $colleda_borked$"
+
+colleda_industry_sh:0 "Damaged Industrial Operations"
+colleda_industry_sh_desc:0 "Massive arrays of factories fill these layers of the shellworld, the sound of machinery fills the air $colleda_borked$"
+
+colleda_refinery_sh:0 "Damaged Refinery Operations"
+colleda_refinery_sh_desc:0 "Massive refinery arrays artifically create advanced resources for various uses $colleda_borked$"
+
+colleda_plaza_sh:0 "Damaged Leisure Operations"
+colleda_plaza_sh_desc:0 "These layers of the shellworld is filled with commercial centers and other forms of leisure $colleda_borked$"
+
+colleda_metropolis:0 "Damaged Hyper Metropolis"
+colleda_metropolis_desc:0 "Massive cities filled with residential buildings and office spaces"
+
+colleda_nexus:0 "Hyper Nexus"
+colleda_nexus_desc:0 "Massive machine cities filled with all administrative needs a intelligence needs"
+
+colleda_hive_city:0 "Hyper Nexus"
+colleda_hive_city_desc:0 "Massive partially living cities filled with all needs for a hive mind"
+
+colleda_extraction:0 "Extraction Operations"
+colleda_extraction_desc:0 "Inner layers of the shellworld focus on extracting energy from the black hole and powering matter synthesizers"
+
+colleda_preserve:0 "Preservation Operations"
+colleda_preserve_desc:0 "Outer near vacuum layers allow for perfectly controlled artificial environments be it for research or recreating planetary surfaces for agriculture"
+
+colleda_industry:0 "Industrial Operations"
+colleda_industry_desc:0 "Massive arrays of factories fill these layers of the shellworld, the sound of machinery fills the air"
+
+colleda_refinery:0 "Refinery Operations"
+colleda_refinery_desc:0 "Massive refinery arrays artifically create advanced resources for various uses"
+
+colleda_plaza_:0 "Leisure Operations"
+colleda_plaza_desc:0 "These layers of the shellworld is filled with commercial centers and other forms of leisure"
 
 
-colleda_penrose:0 "Penrose Process Arrays"
-colleda_penrose_desc:0 "On inner layers of the Shellworld energy is extracted from the black hole itself to power the massive structure"
+#Deposits
+d_atra_ruined_expansion:0 "Damaged Layer Expansion"
+d_atra_ruined_expansion_desc:0 "The life support and atmosphere systems for the inner layers are severely damaged preventing expansion of the shellworld"
+CAN_EXPAND_COLLEDA_TOOLTIP:0 "Alloys the shellworld to expand as more pops are added to it"
 
-colleda_synthesizer:0 "Matter Synthesizer Arrays"
-colleda_synthesizer_desc:0 "These layers is filled with matter synthesizers pulling massive amounts of power to create raw materials for various uses"
+d_colleda_ruins_automation:0 "Damaged Automated Systems"
+d_colleda_ruins_automation_desc:0 "The automated systems on the shellworld are severely damaged and need to be repaired"
+COLLEDA_REPAIR_AUTOMATION_TOOLTIP:0 "Allows districts to buff their respective jobs"
 
-colleda_farms:0 "Agricultural Arrays"
-colleda_farms_desc:0 "These layers are covered in fertile ground with artifical lighting and engineered environments where massive amounts of food can be grown"
+d_colleda_ruins_automation_advanced:0 "Damaged Advanced Automated Systems"
+d_colleda_ruins_automation_advanced_desc:0 "$d_colleda_ruins_automation_desc$"
+COLLEDA_REPAIR_AUTOMATION_ADVANCED_TOOLTIP:0 "Allows us to specialize the shellworld districts"
 
-colleda_factory:0 "Foundry Arrays"
-colleda_factory_desc:0 "These layers are covered in foundries producing massive amounts of materials for military industries" 
+d_atra_colleda_job_manager:0 "Central Job Management"
+d_atra_colleda_job_manager_desc:0 "With such a massive structure to maintain we can't afford to be picky about our tasks"
 
-colleda_industry:0 "Industrial Arrays"
-colleda_industry_desc:0 "Factories and artisans fill these layers of the shellworld producing consumer goods"
+d_colleda_generator:0 "Partially Functioning Automation"
+d_colleda_generator_desc:0 "The automated systems on the shellworld are only partially functioning, but it's still enough to maintain our reduced operations"
 
-colleda_refinery:0 "Refinery Arrays"
-colleda_refinery_desc:0 "These layers of the shellworld are covered in pipes, refineries and distilleries, a constant toxic smoke permeates it"
+atradai_colleda_buff:0 "Shellworld"
+atradai_colleda_buff_desc:0 "This extremely advanced habitat is equipped with top of the line automation systems making all work extremely more efficient"
 
-colleda_leisure:0 "Leisure Arrays"
-colleda_leisure_desc:0 "Where denizes of the shellworld unwind in their leisure hours"
+#Decisions
+dec_atra_repair_colleda:0 "Repair Shellworld"
+dec_atra_repair_colleda_desc:0 "We may finally start the monumental task of repairing the shellworld back to it's former glory"
+REPAIR_COLLEDA_EFFECT:0 "The shellworld will be repaired, damaged districts will be replaced with their full version eight times more powerful. \nYEvery eight damaged districts will be replaced with one full version.!"
 
-colleda_science:0 "Research Arrays"
-colleda_science_desc:0 "Laboratories completely fill these layers dedicated to R&D"
+dec_atra_spec_colleda:0 "Specialize Shellworld Operations"
+dec_atra_spec_colleda_desc:0 "We can specialize the shellworld operations to focus on one specific type"
 
-colleda_paperwork:0 "Bureaucratic Arrays"
-colleda_paperwork_desc:0 "Offices fill these layers to make sure the massive bureaucracy needed for the shellworld is always in order"
+#spec event
+atradai_colleda.6000.name:0 "Shellworld Specialization"
+atradai_colleda.6000.desc:0 "What would you like to specialize?"
 
-colleda_arcology:0 "Industrial Arcologies"
-colleda_arcology_desc:0 "Massive general purpose factories fill these layers of the shellworld providing all types of processed goods, be for military or civillian use"
+atradai_colleda.spec.ex:0 "$colleda_extraction$"
+atradai_colleda.spec.pr:0 "$colleda_preserve$"
+atradai_colleda.spec.in:0 "$colleda_industry$"
 
-#Modifiers:
-d_atra_ruined_colleda:0 "Ruined shellworld"
-d_atra_ruined_colleda_desc:0 "The shellworld usually receives a extremely powerful modifier, clearing this blocker will add it"
-d_atra_colleda_job_manager:0 "Shellworld management center"
-d_atra_colleda_job_manager_desc:0 "With such a massive planet and such a little population we cannot afford to be picky with so much work to be done"
-atradai_colleda_buff:0 "Shellwolrd"
-atradai_colleda_buff_desc:0 "The advanced automation systems in this shellworld greatly increase efficiency"
+atradai_colleda.spec.a:0 "No Specialization"
+atradai_colleda.spec.no:0 "Remove All Specializations"
 
-d_colleda_ruins_1:0 "Ruined Automated Systems"
-d_colleda_ruins_2:0 "Ruined Matter synthesiser"
-d_colleda_ruins_3:0 "Ruined Penrose Nodes"
-d_colleda_ruins_4:0 "Ruined Life Support Arrays"
-d_colleda_ruins_5:0 "Ruined Layer Management Nodes"
+atradai_colleda.6001.name:0 "$colleda_extraction$ Specialization"
+atradai_colleda.spec.ec:0 "Focus on Energy Production"
+atradai_colleda.spec.min:0 "Focus on Mineral Production"
 
-d_colleda_ruins_1_desc:0 "Repairing the shellworld is a monumental task, but we have to start somewhere"
-d_colleda_ruins_2_desc:0 "Repairing the shellworld is a monumental task, but we have to start somewhere"
-d_colleda_ruins_3_desc:0 "Repairing the shellworld is a monumental task, but we have to start somewhere"
-d_colleda_ruins_4_desc:0 "Repairing the shellworld is a monumental task, but we have to start somewhere"
-d_colleda_ruins_5_desc:0 "Repairing the shellworld is a monumental task, but we have to start somewhere"
+atradai_colleda.6002.name:0 "$colleda_preserve$ Specialization"
+atradai_colleda.spec.fd:0 "Focus on Food Production"
+atradai_colleda.spec.tc:0 "Focus on Research Production"
 
-#Megastructure
+atradai_colleda.6003.name:0 "$colleda_industry$ Specialization"
+atradai_colleda.spec.al:0 "Focus on Alloy Production"
+atradai_colleda.spec.cg:0 "Focus on Consumer Goods Production"
+
+COLLEDA_SPEC_NONE:0 "The shellworld will not be specialized"
+COLLEDA_SPEC_EC:0 "Extraction operations will only give technician jobs and buff energy production"
+COLLEDA_SPEC_MIN:0 "Extraction operations will only give miner jobs and buff mineral production"
+COLLEDA_SPEC_FD:0 "Preservation operations will only give farmer jobs and buff food production"
+COLLEDA_SPEC_TC:0 "Preservation operations will only give researcher jobs and buff research production"
+COLLEDA_SPEC_AL:0 "Industry operations will only give metallurgist jobs and buff alloy production"
+COLLEDA_SPEC_CG:0 "Industry operations will only give artisan jobs and buff consumer goods production"
+
+##Megastructure
 atradai_shellworld_site:0 "Shellworld Construction Site"
 atradai_shellworld_site_MEGASTRUCTURE_DETAILS:0 "The construction site for a extremely advanced shellworld."
 atradai_shellworld_site_DESC:0 "The construction site for a extremely advanced shellworld."
@@ -130,23 +181,6 @@ atradai_shellworld_3_DESC:0 "A shellworld is being constructed here"
 atradai_shellworld_4:0 "Finished Shellworld"
 atradai_shellworld_4_DESC:0 "A full shellworld"
 
-#Techs
+##Techs
 tech_atradai_shellworld:0 "Shellworld construction"
 tech_atradai_shellworld_desc:0 "Allows us to build our own shellworlds around black hole"
-
-#Decisions
-dec_atra_repair_colleda:0 "Repair Shellworld"
-dec_atra_repair_colleda_desc:0 "Begins repairs of the shellworld"
-
-REQUIRE_REPAIRED_MODIFIER:0 "We need to fully repair the shellworld systems before starting this monumental task"
-
-REPAIR_SHELLWORLD_DECISION_EFFECTS:0 "Repairing the shellworld is a monumental task, but once finished it shall be returned to it's true glory"
-
-dec_atra_specialized:0 "Revert Industry Specialization"
-COLLEDA_NO_INDUSTRY_DISTRICT:0 "We cannot have any industrial districts built"
-COLLEDA_INDUSTRY_SPECIALIZED_EFFECT:0 "We can merge the shellworld industrial arrays into general purpose industries \n HDoing so will merge foundry and industrial districts into arcology districts!"
-
-dec_atra_specialized_undo:0 "Specialize Shellworld Industry"
-COLLEDA_NO_ARCOLOGY_DISTRICT:0 "We cannot have any industrial districts built"
-COLLEDA_INDUSTRY_SPECIALIZED_UNDO_EFFECT:0 "We can specialize the industry of the shellworld to focus on civillian or military uses. \n HDoing so will split arcology districts into foundry and industry districts!"
-

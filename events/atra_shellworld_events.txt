@@ -1,0 +1,198 @@
+namespace = atradai_colleda
+## MEGASTRUCTURE CONSTRUCTION
+country_event = {
+	id = atradai_colleda.5000
+	title = atradai_colleda.5000.name
+	desc = atradai_colleda.5000.desc
+	picture = GFX_evt_city_planet
+	show_sound = event_dyson_sphere_build_start
+	is_triggered_only = yes
+	location = from
+}
+
+country_event = {
+	id = atradai_colleda.5001
+	title = atradai_colleda.5001.name
+	desc = atradai_colleda.5001.desc
+	picture = GFX_evt_city_planet
+	show_sound = event_dyson_sphere_build_upgrade_frame
+	is_triggered_only = yes
+	location = from
+}
+
+country_event = {
+	id = atradai_colleda.5002
+	title = atradai_colleda.5002.name
+	desc = atradai_colleda.5002.desc
+	picture = GFX_evt_city_planet
+	show_sound = event_dyson_sphere_build_complete
+	is_triggered_only = yes
+	location = from
+	immediate = {
+		country_event = { id = atradai_colleda.5010 }
+	}
+}
+
+#Shellworld mechanics event
+country_event = {
+	id = atradai_colleda.5010
+	title = atradai_colleda.5010.name
+	desc = atradai_colleda.5010.desc
+	picture = GFX_evt_city_planet
+	show_sound = event_default
+	is_triggered_only = yes
+	location = from
+	option = {
+		name = atradai_colleda.5010.a
+		country_event = { id = atradai_colleda.5010 }
+	}
+	option = {
+		name = atradai_colleda.5010.b
+	}
+}
+
+## Specialization
+country_event = {
+	id = atradai_colleda.6000
+	title = atradai_colleda.6000.name
+	desc = atradai_colleda.6000.desc
+	picture = GFX_evt_city_planet
+	show_sound = event_default
+	is_triggered_only = yes
+	location = event_target:colleda_for_spec
+	option = {
+		name = atradai_colleda.spec.ex
+		custom_tooltip = COLLEDA_SPEC_EX
+		country_event = { id = atradai_colleda.6001 }
+	}
+	option = {
+		name = atradai_colleda.spec.pr
+		custom_tooltip = COLLEDA_SPEC_PR
+		country_event = { id = atradai_colleda.6002 }
+	}
+	option = {
+		name = atradai_colleda.spec.in
+		custom_tooltip = COLLEDA_SPEC_IN
+		country_event = { id = atradai_colleda.6003 }
+	}
+	option = {
+		name = atradai_colleda.spec.a
+		custom_tooltip = COLLEDA_SPEC_NONE
+		event_target:colleda_for_spec = {
+			colleda_clear_spec = yes
+		}
+	}
+	option = {
+		name = atradai_colleda.spec.stop
+		custom_tooltip = COLLEDA_SPEC_CANCEL
+	}
+}
+
+
+# extraction
+country_event = {
+	id = atradai_colleda.6001
+	title = atradai_colleda.6001.name
+	desc = atradai_colleda.6000.desc
+	picture = GFX_evt_city_planet
+	show_sound = event_default
+	is_triggered_only = yes
+	location = event_target:colleda_for_spec
+	option = {
+		name = atradai_colleda.spec.ec
+		custom_tooltip = COLLEDA_SPEC_EC
+		event_target:colleda_for_spec = {
+			remove_planet_flag = colleda_spec_ec
+			remove_planet_flag = colleda_spec_min
+			set_planet_flag = colleda_spec_ec
+		}
+	}
+	option = {
+		name = atradai_colleda.spec.min
+		custom_tooltip = COLLEDA_SPEC_MIN
+		event_target:colleda_for_spec = {
+			remove_planet_flag = colleda_spec_ec
+			remove_planet_flag = colleda_spec_min
+			set_planet_flag = colleda_spec_min
+		}
+	}
+	option = {
+		name = atradai_colleda.spec.a
+		custom_tooltip = COLLEDA_SPEC_NONE
+		event_target:colleda_for_spec = {
+			remove_planet_flag = colleda_spec_ec
+			remove_planet_flag = colleda_spec_min
+		}
+	}
+}
+# preserve
+country_event = {
+	id = atradai_colleda.6002
+	title = atradai_colleda.6002.name
+	desc = atradai_colleda.6000.desc
+	picture = GFX_evt_city_planet
+	show_sound = event_default
+	is_triggered_only = yes
+	location = event_target:colleda_for_spec
+	option = {
+		name = atradai_colleda.spec.fd
+		custom_tooltip = COLLEDA_SPEC_FD
+		event_target:colleda_for_spec = {
+			remove_planet_flag = colleda_spec_food
+			remove_planet_flag = colleda_spec_tech
+			set_planet_flag = colleda_spec_food
+		}
+	}
+	option = {
+		name = atradai_colleda.spec.tc
+		custom_tooltip = COLLEDA_SPEC_TC
+		event_target:colleda_for_spec = {
+			remove_planet_flag = colleda_spec_food
+			remove_planet_flag = colleda_spec_tech
+			set_planet_flag = colleda_spec_tech
+		}
+	}
+	option = {
+		name = atradai_colleda.spec.a
+		custom_tooltip = COLLEDA_SPEC_NONE
+		event_target:colleda_for_spec = {
+			remove_planet_flag = colleda_spec_food
+			remove_planet_flag = colleda_spec_tech
+		}
+	}
+}
+country_event = {
+	id = atradai_colleda.6003
+	title = atradai_colleda.6003.name
+	desc = atradai_colleda.6000.desc
+	picture = GFX_evt_city_planet
+	show_sound = event_default
+	is_triggered_only = yes
+	location = event_target:colleda_for_spec
+	option = {
+		name = atradai_colleda.spec.al
+		custom_tooltip = COLLEDA_SPEC_AL
+		event_target:colleda_for_spec = {
+			remove_planet_flag = colleda_spec_al
+			remove_planet_flag = colleda_spec_cg
+			set_planet_flag = colleda_spec_al
+		}
+	}
+	option = {
+		name = atradai_colleda.spec.cg
+		custom_tooltip = COLLEDA_SPEC_CG
+		event_target:colleda_for_spec = {
+			remove_planet_flag = colleda_spec_al
+			remove_planet_flag = colleda_spec_cg
+			set_planet_flag = colleda_spec_cg
+		}
+	}
+	option = {
+		name = atradai_colleda.spec.a
+		custom_tooltip = COLLEDA_SPEC_NONE
+		event_target:colleda_for_spec = {
+			remove_planet_flag = colleda_spec_al
+			remove_planet_flag = colleda_spec_cg
+		}
+	}
+}

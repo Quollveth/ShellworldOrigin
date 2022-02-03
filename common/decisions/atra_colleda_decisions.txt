@@ -1,0 +1,180 @@
+#Specialization
+dec_atra_spec_colleda = {
+	enactment_time = 0
+	potential = {
+		is_planet_class = pc_colleda
+		NOT = { has_deposit = d_colleda_ruins_automation_advanced }
+	}
+	effect = {
+		save_global_event_target_as = colleda_for_spec
+		owner = { country_event = { id = atradai_colleda.6000 } }
+	}
+}
+
+#Repair
+dec_atra_repair_colleda = {
+	enactment_time = 3600
+	resources = {
+		category = decisions
+		cost = {
+			energy = 15000
+			alloys = 30000
+			rare_crystals = 5000
+			exotic_gases = 5000
+			rare_crystals = 5000
+		}
+	}
+	allow = {
+		owner = { has_technology = tech_mega_engineering }
+	}
+	potential = {
+		is_planet_class = pc_colleda
+		has_planet_flag = ruined_shellworld
+		NOT = { 
+			has_deposit = d_colleda_ruins_automation
+			has_deposit = d_colleda_ruins_automation_advanced
+			has_deposit = d_atra_ruined_expansion
+
+		}
+	}
+	effect = {
+		custom_tooltip = REPAIR_COLLEDA_EFFECT
+
+		hidden_effect = { #thamks laneer
+			colleda_clear_spec = yes
+
+			if = {
+				limit = {
+					has_district = colleda_metropolis_sh
+				}
+				shellworld_repair_effect = {
+					pre_repair_district = colleda_metropolis_sh
+					var_name = var_sh_city
+				}
+			}
+			if = {
+				limit = {
+					has_district = colleda_nexus_sh
+				}
+				shellworld_repair_effect = {
+					pre_repair_district = colleda_nexus_sh
+					var_name = var_sh_nexus
+				}
+			}
+			if = {
+				limit = {
+					has_district = colleda_hive_city_sh
+				}
+				shellworld_repair_effect = {
+					pre_repair_district = colleda_hive_city_sh
+					var_name = var_sh_hive
+				}
+			}
+			if = {
+				limit = {
+					has_district = colleda_extraction_sh
+				}
+				shellworld_repair_effect = {
+					pre_repair_district = colleda_extraction_sh
+					var_name = var_sh_extra
+				}
+			}
+			if = {
+				limit = {
+					has_district = colleda_preserve_sh
+				}
+				shellworld_repair_effect = {
+					pre_repair_district = colleda_preserve_sh
+					var_name = var_sh_prese
+				}
+			}
+			if = {
+				limit = {
+					has_district = colleda_industry_sh
+				}
+				shellworld_repair_effect = {
+					pre_repair_district = colleda_industry_sh
+					var_name = var_sh_indus
+				}
+			}
+			if = {
+				limit = {
+					has_district = colleda_refinery_sh
+				}
+				shellworld_repair_effect = {
+					pre_repair_district = colleda_refinery_sh
+					var_name = var_sh_refine
+				}
+			}
+			if = {
+				limit = {
+					has_district = colleda_plaza_sh
+				}
+				shellworld_repair_effect = {
+					pre_repair_district = colleda_plaza_sh
+					var_name = var_sh_plaza
+				}
+			}
+			
+			if = {
+				limit = {
+					NOT = {
+						has_district = colleda_metropolis_sh
+						has_district = colleda_nexus_sh
+						has_district = colleda_hive_city_sh
+						has_district = colleda_extraction_sh
+						has_district = colleda_preserve_sh
+						has_district = colleda_industry_sh
+						has_district = colleda_refinery_sh
+						has_district = colleda_plaza_sh
+					}
+				}
+				add_district = colleda_metropolis
+				add_district = colleda_extraction
+			} else = {
+				remove_all_districts = yes
+			}
+
+			remove_planet_flag = ruined_shellworld
+
+			shellworld_repair_after_effect = {
+				post_repair_district = colleda_metropolis
+				var_name = var_sh_city
+			}
+			shellworld_repair_after_effect = {
+				post_repair_district = colleda_nexus
+				var_name = var_sh_nexus
+			}
+			shellworld_repair_after_effect = {
+				post_repair_district = colleda_hive_city
+				var_name = var_sh_hive
+			}
+			shellworld_repair_after_effect = {
+				post_repair_district = colleda_extraction
+				var_name = var_sh_extra
+			}
+			shellworld_repair_after_effect = {
+				post_repair_district = colleda_preserve
+				var_name = var_sh_prese
+			}
+			shellworld_repair_after_effect = {
+				post_repair_district = colleda_industry
+				var_name = var_sh_indus
+			}
+			shellworld_repair_after_effect = {
+				post_repair_district = colleda_refinery
+				var_name = var_sh_refine
+			}
+			shellworld_repair_after_effect = {
+				post_repair_district = colleda_plaza
+				var_name = var_sh_plaza
+			}
+			
+			set_planet_size = 1
+			add_modifier = {
+				modifier = atradai_colleda_buff
+				days = -1
+			}
+		}
+	}
+}

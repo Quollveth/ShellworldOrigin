@@ -3,9 +3,9 @@ origin_shellworld = {
 	icon = "gfx/interface/icons/origins/origins_shattered_ring.dds"
 	picture = GFX_origin_shattered_ring
 
-	starting_colony = pc_colleda_shattered
+	starting_colony = pc_colleda
 	
-	habitability_preference = pc_colleda_shattered
+	habitability_preference = pc_colleda
 	preferred_planet_class_neighbor = no
 	max_once_global = yes
 	

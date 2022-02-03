@@ -8,7 +8,7 @@ shellworld_origin = {
 		size = 15
 
 		planet = {
-			class = pc_colleda_shattered
+			class = pc_colleda
 			size = 1
 			orbit_angle = 0
 			orbit_distance = 0
@@ -24,7 +24,9 @@ shellworld_origin = {
 				set_planet_flag = has_megastructure		# Vanilla uses to check if an orbital station can be built here
 				set_planet_flag = colony_event			# Vanilla uses to prevent unwanted events on planets
 				set_planet_flag = special_start_planet
-				add_building = colleda_layer_management_center
+				#shellworld
+				set_planet_flag = ruined_shellworld
+				set_planet_flag = broken_automation
 			}
 		}
 	}
